@@ -9,6 +9,7 @@ import '../style/css/ContentInfo.css';
 function ContentInfo() {
     const [toggle, changeToggle] = useState(false);
     const dispatch = ReactRedux.useDispatch();
+
     const characters = ReactRedux.useSelector( (state: IAppState) => {
         return state.characterReducer.characters;
     });
@@ -20,19 +21,12 @@ function ContentInfo() {
 
     if( toggle === false ){
         return(
-            <div>
-                <button onClick={ getCharacters }>
-                    Get Characters!
-                </button>
-            </div>
+            <button onClick={ getCharacters }> Get Characters! </button>
         );
-
     } else {    
         return(
             <>
-                <button onClick={ getCharacters }>
-                    Hide Characters!
-                </button>
+                <button onClick={ getCharacters }> Hide Characters! </button>
                 { characters.map((character: any) => {
                     return(
                         <div key={ character.id }>
